@@ -23,7 +23,7 @@ export class ProductDialogComponent implements OnInit {
         Validators.required,
         Validators.maxLength(100)
       ]),
-      id_categories: new FormControl(this.productData ? this.productData.name : '', Validators.required),
+      id_categories: new FormControl(this.productData ? this.productData.id_categories : '', Validators.required),
       price: new FormControl(this.productData ? this.productData.price : '', [
         Validators.required, 
         Validators.min(0.01)

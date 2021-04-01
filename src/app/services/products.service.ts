@@ -57,7 +57,7 @@ export class ProductsService extends ApiConfigService {
           });
   }
 
-  put(id: number ,body: any): Observable<any> {
+  put(id: number, body: any): Observable<any> {
     return this.http.put(`${this.getUrlApi()}/products/${id}`, body, {
             headers: new HttpHeaders({
               'Content-Type':  'application/json',
