@@ -27,7 +27,10 @@ export class ItemViewComponent implements OnInit {
       data: this.item
     }).afterClosed().subscribe(ret => {
       if(ret) {
-        this.service.put(ret).subscribe(() => this.service.openSnackBar('Enviado...'))
+        this.service.put(this.item.id, ret).subscribe(() => {
+          this.service.openSnackBar('Enviado...');
+          this.ngOnInit();
+        })
       }
     })
   }
@@ -38,7 +41,10 @@ export class ItemViewComponent implements OnInit {
       .afterClosed()
       .subscribe(ret => {
         if (ret)
-          this.service.delete(this.item.id).subscribe(() => this.service.openSnackBar('Deletado'))
+          this.service.delete(this.item.id).subscribe(() => {
+            this.service.openSnackBar('Deletado');
+            this.ngOnInit();
+          })
       })
     }
   }
