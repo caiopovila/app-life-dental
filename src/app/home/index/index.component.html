@@ -1,0 +1,25 @@
+<mat-card class="center">
+    <mat-form-field class='input_search'>
+      <mat-label>Pesquisa de produtos</mat-label>
+      <input matInput #iput type="search" (keyup.enter)="searchProduct(iput.value)" placeholder="Ex. Carro">
+    </mat-form-field>
+    <button mat-icon-button  matTooltip="Pesquisar" aria-label="Pesquisar" (click)="searchProduct(iput.value)" color="primary">
+      <mat-icon>search</mat-icon>
+    </button>
+</mat-card>
+  
+  <section>
+  
+    <mat-paginator [length]="totalResults"
+      [pageSize]="params.limit"
+      [pageSizeOptions]="pageSizeOptions"
+      (page)="params.limit = $event.pageSize; params.offset = $event.pageSize * $event.pageIndex; searchProduct(iput.value)">
+    </mat-paginator>
+  
+    <section *ngFor="let item of results">
+  
+      <app-item-view [item]="item"></app-item-view>
+  
+    </section>
+  
+  </section>

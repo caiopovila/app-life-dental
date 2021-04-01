@@ -1,0 +1,45 @@
+<h2 mat-dialog-title>
+    <mat-icon color="primary">shopping_cart</mat-icon>
+    Produto <span *ngIf="product">{{product.name}}</span>
+</h2>
+<mat-dialog-content>
+
+    <section>
+        <mat-form-field>
+            <mat-label>Nome</mat-label>
+            <input matInput [(ngModel)]="product.name" type="text" required>
+        </mat-form-field>
+    </section>
+
+    <section>
+        <mat-form-field>
+            <mat-label>Categoria</mat-label>
+            <mat-select [(ngModel)]="product.id_categories" required>
+            <mat-option *ngFor="let cat of categories" [value]="cat.id">
+                {{cat.name}}
+            </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </section>
+
+    <section>
+        <mat-form-field>
+            <mat-label>Preço</mat-label>
+            <input matInput [(ngModel)]="product.price" step="0.01" min="0.00" type="number" required>
+        </mat-form-field>
+    </section>
+
+    <section>
+        <mat-form-field>
+            <mat-label>Quantidade</mat-label>
+            <input matInput [(ngModel)]="product.amount" min="0" type="number" required>
+        </mat-form-field>
+    </section>
+
+<br>
+
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close cdkFocusInitial>Cancelar</button>
+    <button mat-button color="primary" [mat-dialog-close]="product">Enviar <mat-icon color="primary">send</mat-icon></button>
+</mat-dialog-actions>

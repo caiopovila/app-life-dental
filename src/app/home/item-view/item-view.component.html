@@ -1,0 +1,16 @@
+<br>
+<mat-card>
+    <mat-card-header>
+        <mat-card-title> <mat-icon color="primary">category</mat-icon> {{item.name}}</mat-card-title>
+        <mat-card-subtitle>{{item.price | currency: 'BRL' }}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+        quantidade: {{item.amount}}
+    </mat-card-content>
+    <mat-card-actions align="end">
+        <button mat-button color="primary" *ngIf="!myProduct">Comprar</button>
+        <button mat-button color="warn" (click)="delete()" *ngIf="myProduct"> <mat-icon color="warn">delete</mat-icon> Remover</button>
+        <button mat-button color="accent" (click)="openDialog()" *ngIf="myProduct"> <mat-icon color="accent">edit</mat-icon> Editar</button>
+    </mat-card-actions>
+</mat-card>
+<br>

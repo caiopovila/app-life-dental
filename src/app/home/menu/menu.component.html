@@ -1,0 +1,26 @@
+<mat-toolbar>
+    <button mat-icon-button [matMenuTriggerFor]="menu" matTooltip="Menu de opções" aria-label="Menu de opções">
+        <mat-icon color="accent">menu</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+        <button *ngFor="let link of links" mat-menu-item routerLink={{link.link}} routerLinkActive="active" (click)="title = link.name"> 
+            <mat-icon>{{ link.icon }}</mat-icon> {{link.name}}</button>
+        <button mat-menu-item (click)="exit()"><mat-icon>logout</mat-icon> Sair</button>
+    </mat-menu>
+    
+    <span class="spacer"></span>
+
+    <button mat-icon-button [matMenuTriggerFor]="notf" matTooltip="Notificações" aria-label="Botão notificações">
+        <mat-icon color="accent">notifications_none</mat-icon>
+    </button>
+    <mat-menu #notf="matMenu">
+        <section class="center">
+            <h5 color="warn"><mat-icon color="warn">warning</mat-icon> Sem notificações!</h5>
+        </section>
+    </mat-menu>
+
+
+    <span><h1>{{title}}</h1></span>
+
+
+</mat-toolbar>

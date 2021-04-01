@@ -1,0 +1,9 @@
+<button mat-button color="primary" (click)="openDialog()"><mat-icon color="primary">shopping_cart</mat-icon> Add produto </button>
+<h1 class="center"> <mat-icon color="primary">inventory_2</mat-icon> Meus produtos</h1>
+<mat-divider></mat-divider>
+
+<section *ngFor="let item of results">
+
+    <app-item-view [item]="item" [myProduct]="1"></app-item-view>
+
+</section>
