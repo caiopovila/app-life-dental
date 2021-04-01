@@ -58,7 +58,7 @@ export class ProductsService extends ApiConfigService {
   }
 
   put(body: any): Observable<any> {
-    return this.http.post(`${this.getUrlApi()}/products/${body.id}`, body, {
+    return this.http.put(`${this.getUrlApi()}/products/${body.id}`, body, {
             headers: new HttpHeaders({
               'Content-Type':  'application/json',
               'Authorization': `Bearer ${this.getIdSession()}`

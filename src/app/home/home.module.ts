@@ -6,7 +6,7 @@ import { HomeComponent } from './home.component';
 import { MenuComponent } from './menu/menu.component';
 
 import { FormsModule } from '@angular/forms';
-
+import { ReactiveFormsModule } from '@angular/forms'
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatStepperModule } from '@angular/material/stepper';
@@ -67,7 +67,8 @@ import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.componen
     MatSnackBarModule,
     MatStepperModule,
     MatSidenavModule,
-    MatBadgeModule
+    MatBadgeModule,
+    ReactiveFormsModule
   ]
 })
 export class HomeModule { }

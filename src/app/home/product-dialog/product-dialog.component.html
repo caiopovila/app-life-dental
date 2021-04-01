@@ -1,45 +1,66 @@
 <h2 mat-dialog-title>
     <mat-icon color="primary">shopping_cart</mat-icon>
-    Produto <span *ngIf="product">{{product.name}}</span>
+    Produto <span *ngIf="productData">{{name}}</span>
 </h2>
 <mat-dialog-content>
+    <form [formGroup]="product">
+        <section>
+            <mat-form-field>
+                <mat-label>Nome</mat-label>
+                <input matInput formControlName="name" type="text" required>
+                    <mat-error *ngIf="name && name.errors && name.errors.required">
+                        Nome é requirido.
+                    </mat-error>
+                    <mat-error *ngIf="name && name.errors && name.errors.maxlength">
+                        Nome deve ter no máximo 100 caracteres.
+                    </mat-error>
+            </mat-form-field>
+        </section>
 
-    <section>
-        <mat-form-field>
-            <mat-label>Nome</mat-label>
-            <input matInput [(ngModel)]="product.name" type="text" required>
-        </mat-form-field>
-    </section>
+        <section>
+            <mat-form-field>
+                <mat-label>Categoria</mat-label>
+                <mat-select formControlName="id_categories" required>
+                <mat-option *ngFor="let cat of categories" [value]="cat.id">
+                    {{cat.name}}
+                </mat-option>
+                </mat-select>
+                    <mat-error *ngIf="id_categories && id_categories.errors && id_categories.errors.required">
+                        Categoria é requirido.
+                    </mat-error>
+            </mat-form-field>
+        </section>
 
-    <section>
-        <mat-form-field>
-            <mat-label>Categoria</mat-label>
-            <mat-select [(ngModel)]="product.id_categories" required>
-            <mat-option *ngFor="let cat of categories" [value]="cat.id">
-                {{cat.name}}
-            </mat-option>
-            </mat-select>
-        </mat-form-field>
-    </section>
+        <section>
+            <mat-form-field>
+                <mat-label>Preço</mat-label>
+                <input matInput formControlName="price" step="0.01" type="number" required>
+                    <mat-error *ngIf="price && price.errors && price.errors.required">
+                        Preço é requirido.
+                    </mat-error>
+                    <mat-error *ngIf="price && price.errors && price.errors.min">
+                        Preço deve ter no mínimo 0.01.
+                    </mat-error>
+            </mat-form-field>
+        </section>
 
-    <section>
-        <mat-form-field>
-            <mat-label>Preço</mat-label>
-            <input matInput [(ngModel)]="product.price" step="0.01" min="0.00" type="number" required>
-        </mat-form-field>
-    </section>
-
-    <section>
-        <mat-form-field>
-            <mat-label>Quantidade</mat-label>
-            <input matInput [(ngModel)]="product.amount" min="0" type="number" required>
-        </mat-form-field>
-    </section>
-
+        <section>
+            <mat-form-field>
+                <mat-label>Quantidade</mat-label>
+                <input matInput formControlName="amount" type="number" required>
+                    <mat-error *ngIf="amount && amount.errors && amount.errors.required">
+                        Preço é requirido.
+                    </mat-error>
+                    <mat-error *ngIf="amount && amount.errors && amount.errors.min">
+                        Preço deve ter no mínimo 1.
+                    </mat-error>
+            </mat-form-field>
+        </section>
+    </form>
 <br>
 
 </mat-dialog-content>
 <mat-dialog-actions align="end">
     <button mat-button mat-dialog-close cdkFocusInitial>Cancelar</button>
-    <button mat-button color="primary" [mat-dialog-close]="product">Enviar <mat-icon color="primary">send</mat-icon></button>
+    <button mat-button color="primary" [mat-dialog-close]="product.getRawValue()" *ngIf="product.valid">Enviar<mat-icon color="primary">send</mat-icon></button>
 </mat-dialog-actions>

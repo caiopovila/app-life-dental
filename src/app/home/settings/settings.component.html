@@ -5,57 +5,47 @@
             <mat-card-header *ngIf="user.credit_limit"><mat-icon color="primary">credit_card</mat-icon> Creditos: {{user.credit_limit}}</mat-card-header>
         </mat-card-header>
         <mat-card-content *ngIf="user">
-            <form #form="ngForm">
                 <section>
                     <mat-form-field>
                         <mat-label>Nome</mat-label>
-                        <input matInput [value]="user.name" name="name" maxlength="50" type="text" required ngModel>
+                        <input matInput [(ngModel)]="user.name" name="name" disabled maxlength="50" type="text" required>
                     </mat-form-field>
                 </section>
 
                 <section>
                     <mat-form-field>
                         <mat-label>Rua</mat-label>
-                        <input matInput [value]="user.street" name="street" maxlength="100" type="text" required ngModel>
+                        <input matInput [(ngModel)]="user.street" name="street" disabled maxlength="100" type="text" required>
                     </mat-form-field>
                 </section>
 
                 <section>
                     <mat-form-field>
                         <mat-label>Cidade</mat-label>
-                        <input matInput [value]="user.city" name="city" maxlength="50" type="text" required ngModel>
+                        <input matInput [(ngModel)]="user.city" name="city" disabled maxlength="50" type="text" required>
                     </mat-form-field>
                 </section>
 
                 <section>
                     <mat-form-field>
                         <mat-label>Estado</mat-label>
-                        <input matInput [value]="user.state" name="state" maxlength="2" type="text" required ngModel>
+                        <input matInput [(ngModel)]="user.state" name="state" disabled maxlength="2" type="text" required>
                     </mat-form-field>
                 </section>
 
                 <section>
                     <mat-form-field>
                         <mat-label>CPF</mat-label>
-                        <input matInput [value]="user.cpf" name="cpf" maxlength="14" type="text" required ngModel>
+                        <input matInput [(ngModel)]="user.cpf" name="cpf" disabled maxlength="14" type="text" required>
                     </mat-form-field>
                 </section>
 
                 <section>
                     <mat-form-field>
                         <mat-label>Usuário</mat-label>
-                        <input matInput [value]="user.user" name="user" minlength="2" maxlength="100" type="text" required ngModel>
+                        <input matInput [(ngModel)]="user.user" name="user" disabled minlength="2" maxlength="100" type="text" required>
                     </mat-form-field>
                 </section>
-
-                <section>
-                    <mat-form-field>
-                        <mat-label>Nova senha</mat-label>
-                        <input matInput [value]="user.password" name="password" minlength="4" maxlength="100" type="password" required ngModel>
-                    </mat-form-field>
-                </section>
-            </form>
-            <button mat-button color="primary" (click)="send(form)">Enviar <mat-icon color="primary">send</mat-icon></button>
         </mat-card-content>
     </mat-card>
 </div>
