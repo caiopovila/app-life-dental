@@ -61,6 +61,6 @@
 
 </mat-dialog-content>
 <mat-dialog-actions>
-    <button mat-button mat-dialog-close cdkFocusInitial>Cancelar</button>
+    <button mat-button color="warn" mat-dialog-close cdkFocusInitial>Cancelar</button>
     <button mat-button color="primary" [mat-dialog-close]="product.getRawValue()" *ngIf="product.valid">Enviar<mat-icon color="primary">send</mat-icon></button>
 </mat-dialog-actions>
